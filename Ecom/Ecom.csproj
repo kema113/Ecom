@@ -6,4 +6,42 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Images\actor-1.jpeg" />
+    <None Include="wwwroot\Images\actor-2.jpeg" />
+    <None Include="wwwroot\Images\actor-3.jpeg" />
+    <None Include="wwwroot\Images\actor-4.jpeg" />
+    <None Include="wwwroot\Images\actor-5.jpeg" />
+    <None Include="wwwroot\Images\cinema-1.jpeg" />
+    <None Include="wwwroot\Images\cinema-2.jpeg" />
+    <None Include="wwwroot\Images\cinema-3.jpeg" />
+    <None Include="wwwroot\Images\cinema-4.jpeg" />
+    <None Include="wwwroot\Images\cinema-5.jpeg" />
+    <None Include="wwwroot\Images\movie-1.jpeg" />
+    <None Include="wwwroot\Images\movie-10.jpeg" />
+    <None Include="wwwroot\Images\movie-2.jpeg" />
+    <None Include="wwwroot\Images\movie-3.jpeg" />
+    <None Include="wwwroot\Images\movie-4.jpeg" />
+    <None Include="wwwroot\Images\movie-5.jpeg" />
+    <None Include="wwwroot\Images\movie-6.jpeg" />
+    <None Include="wwwroot\Images\movie-7.jpeg" />
+    <None Include="wwwroot\Images\movie-8.jpeg" />
+    <None Include="wwwroot\Images\movie-9.jpeg" />
+    <None Include="wwwroot\Images\producer-1.jpeg" />
+    <None Include="wwwroot\Images\producer-2.jpeg" />
+    <None Include="wwwroot\Images\producer-3.jpeg" />
+    <None Include="wwwroot\Images\producer-4.jpeg" />
+    <None Include="wwwroot\Images\producer-5.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+  </ItemGroup>
+
 </Project>

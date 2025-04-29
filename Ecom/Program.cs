@@ -1,3 +1,7 @@
+using Ecom.Data;
+using Ecom.Data.Services;
+using Microsoft.EntityFrameworkCore;
+
 namespace Ecom
 {
     public class Program
@@ -8,6 +12,12 @@ namespace Ecom
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<AppDbContext>(op =>
+op.UseSqlServer(builder.Configuration.GetConnectionString("conString")));
+            builder.Services.AddScoped<IActorsService,ActorsService>();
+            builder.Services.AddScoped<IProducersService, ProducersService>();
+            builder.Services.AddScoped<IMoviesService, MoviesService>();
+            builder.Services.AddScoped<ICinemasService, CinemasService>();
 
             var app = builder.Build();
 
@@ -29,6 +39,8 @@ namespace Ecom
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            AppDbInitializer.Seed(app);
 
             app.Run();
         }
