@@ -24,5 +24,6 @@ namespace Ecom.Models
         [ForeignKey("Producer")]
         public int ProducerId { get; set; }
         public Producer Producer { get; set; }
+        
     }
 }

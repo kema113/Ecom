@@ -1,4 +1,5 @@
 using Ecom.Data;
+using Ecom.Data.Cart;
 using Ecom.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,11 @@ op.UseSqlServer(builder.Configuration.GetConnectionString("conString")));
             builder.Services.AddScoped<IProducersService, ProducersService>();
             builder.Services.AddScoped<IMoviesService, MoviesService>();
             builder.Services.AddScoped<ICinemasService, CinemasService>();
+            builder.Services.AddScoped<IOrdersService, OrdersService>();
+
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
+            builder.Services.AddSession();
 
             var app = builder.Build();
 
@@ -33,7 +39,7 @@ op.UseSqlServer(builder.Configuration.GetConnectionString("conString")));
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.MapControllerRoute(
