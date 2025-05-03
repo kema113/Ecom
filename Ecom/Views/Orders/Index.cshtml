@@ -3,17 +3,21 @@
 @{
     ViewData["Title"] = "All orders";
 }
+
 <div class="row">
     <div class="col-md-8 offset-2">
         <p>
             <h4>List of all your orders</h4>
         </p>
+
         <table class="table">
             <thead>
                 <tr>
                     <th>Order ID</th>
                     <th>Items</th>
                     <th>Total</th>
+            
+                    <th>User</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,9 +40,12 @@
                         <td class="align-middle">
                             @order.OrderItems.Select(m => m.Movie.Price * m.Amount).Sum().ToString("c")
                         </td>
+         
+                        <td>User FullName </td>
                     </tr>
                 }
             </tbody>
         </table>
+
     </div>
 </div>

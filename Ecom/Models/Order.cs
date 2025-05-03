@@ -13,9 +13,10 @@ namespace Ecom.Models
         public int Id { get; set; }
 
         public string Email { get; set; }
-        //public string UserId { get; set; }   
+         
         public ICollection<OrderItem> OrderItems { get; set; }
+        public string UserId { get; internal set; }
 
-        //public ApplicationUser User { get; set; }
+        
     }
 }

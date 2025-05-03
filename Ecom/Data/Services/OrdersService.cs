@@ -16,23 +16,23 @@ namespace Ecom.Data.Services
             _context = context;
         }
 
-        public async Task<List<Order>> GetOrdersByUserIdAndRoleAsync(string userId, string userRole)
+        public async Task<List<Order>> GetOrdersByUserIdAsync(string userId)
         {
-            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Movie).Include(n => n.User).ToListAsync();
+            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Movie).Where(n => n.UserId == userId).ToListAsync();
 
-            if(userRole != "Admin")
-            {
-                orders = orders.Where(n => n.UserId == userId).ToList();
-            }
+            //if (userRole != "Admin")
+            //{
+            //    orders = orders.Where(n => n.UserId == userId).ToList();
+            //}
 
             return orders;
         }
 
-        public async Task StoreOrderAsync(List<ShoppingCartItem> items,/* string userId,*/ string userEmailAddress)
+        public async Task StoreOrderAsync(List<ShoppingCartItem> items,string userId, string userEmailAddress)
         {
             var order = new Order()
             {
-               // UserId = userId,
+                UserId = userId,
                 Email = userEmailAddress
             };
             await _context.Orders.AddAsync(order);

@@ -2,6 +2,7 @@
 using Ecom.Data.Services;
 using Ecom.Data.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Ecom.Controllers
 {
@@ -17,6 +18,15 @@ namespace Ecom.Controllers
             _shoppingCart = shoppingCart;
             _ordersService = ordersService;
          }
+
+        public async Task<IActionResult> Index()
+        {
+            //string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //string userRole = User.FindFirstValue(ClaimTypes.Role);
+            string userId = "";
+            var orders = await _ordersService.GetOrdersByUserIdAsync(userId);
+            return View(orders);
+        }
         public IActionResult ShoppingCart()
         {
             var items = _shoppingCart.GetShoppingCartItems();
