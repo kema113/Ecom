@@ -1,5 +1,4 @@
 ﻿using Ecom.Models;
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +16,7 @@ namespace Ecom.Data.Cart
         {
             _context = context;
         }
+
         public string ShoppingCartId2 { get; set; }
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
@@ -47,7 +47,8 @@ namespace Ecom.Data.Cart
 
         public List<ShoppingCartItem> GetShoppingCartItems()
         {
-            return ShoppingCartItems ?? (ShoppingCartItems = _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId2).Include(n => n.Movie).ToList());
+            var ShoppingCartItems = _context.ShoppingCartItems.Where(n => n.ShoppingCartId == ShoppingCartId2).Include(n => n.Movie).ToList();
+            return ShoppingCartItems;
         }
 
         public double GetShoppingCartTotal()

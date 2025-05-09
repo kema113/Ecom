@@ -19,12 +19,14 @@ namespace Ecom.Controllers
 
         
 
+    
+
         public async Task<IActionResult> Index()
         {
+      
             var all = await _service.GetAllAsync(x => x.Cinema);
             return View(all);
         }
-
         public async Task<IActionResult> Create()
         {
             var movieDropdownsData = await _service.GetNewMovieDropdownsValues();
@@ -131,9 +133,9 @@ namespace Ecom.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                //var filteredResult = allMovies.Where(x => x.Name.Contains(searchString)).ToList();
-                var filteredResult = allMovies.Where(x => x.Name.ToLower().Contains(searchString.ToLower())).ToList();
-                return View("Index", filteredResult);
+                 
+               var filter = allMovies.Where(x => x.Name.ToLower().Contains(searchString.ToLower() ) || x.Cinema.Name.ToLower().Contains(searchString.ToLower())).ToList();
+                return View("Index", filter);
             }
 
             return View("Index", allMovies);
