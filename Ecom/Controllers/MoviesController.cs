@@ -1,5 +1,6 @@
 ﻿using Ecom.Data;
 using Ecom.Data.Services;
+using Ecom.Data.Static;
 using Ecom.Data.ViewModels;
 using Ecom.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -21,11 +22,25 @@ namespace Ecom.Controllers
 
     
 
-        public async Task<IActionResult> Index()
-        {
-      
+        public async Task<IActionResult> Index(int pg=1)
+        {      
             var all = await _service.GetAllAsync(x => x.Cinema);
-            return View(all);
+
+            if (pg < 1) { pg = 1; }
+
+            int pageSize = 3;
+
+            int movieCount = all.Count();
+
+            var pager = new Pager(movieCount,pg,pageSize);
+
+            int movieSkip = (pg - 1) * pageSize;
+
+            var data = all.Skip(movieSkip).Take(pager.PageSize).ToList();
+            
+            this.ViewBag.Pager = pager;
+            
+            return View(data);
         }
         public async Task<IActionResult> Create()
         {

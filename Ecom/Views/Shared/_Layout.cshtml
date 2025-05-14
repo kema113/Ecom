@@ -33,7 +33,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i>Actors</a>
                         </li>
-                        @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        @if(User.IsInRole("Admin"))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

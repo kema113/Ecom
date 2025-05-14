@@ -11,5 +11,6 @@ namespace Ecom.Models
     {
         [Display(Name = "Full name")]
         public string FullName { get; set; }
+
     }
 }
